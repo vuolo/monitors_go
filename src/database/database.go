@@ -92,17 +92,17 @@ func SendToDatabase(products structs.Products, identifier string, store_url stri
       if initialChecked {
         log.Println(Inverse("[" + store_name + "] " + "New Product Found: " + products[i].Name))
       }
-    } else if foundProduct_obj["available"] != products[i].Available || foundProduct_obj["launchdate"] != products[i].LaunchDate {
-      stock_update_products = append(stock_update_products, products[i])
-      if initialChecked {
-        log.Println(Inverse("[" + store_name + "] " + "New Stock Update Found: " + products[i].Name))
-      }
     } else if foundProduct_obj["md5"] != products[i].MD5 {
       stock_update_products_availabilities = append(stock_update_products, products[i])
       if initialChecked {
         log.Println(Inverse("[" + store_name + "] " + "Availability Update Found: " + products[i].Name))
       }
-    }
+    } /* else if foundProduct_obj["available"] != products[i].Available || foundProduct_obj["launchdate"] != products[i].LaunchDate {
+      stock_update_products = append(stock_update_products, products[i])
+      if initialChecked {
+        log.Println(Inverse("[" + store_name + "] " + "New Stock Update Found: " + products[i].Name))
+      }
+    } */
   }
 
   if len(indifferent_products) > 0 {
